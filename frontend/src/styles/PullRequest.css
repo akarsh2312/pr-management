@@ -1,0 +1,25 @@
+.pull-request {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    background: #fafafa;
+  }
+  
+  .pull-request h2 {
+    margin: 0 0 10px;
+  }
+  
+  .pull-request p {
+    margin: 0 0 5px;
+  }
+  
+  .pull-request a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .pull-request a:hover {
+    text-decoration: underline;
+  }

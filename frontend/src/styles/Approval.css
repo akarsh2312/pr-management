@@ -1,0 +1,14 @@
+.approval {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    background: #fafafa;
+  }
+  
+  .approval p {
+    margin: 0 0 5px;
+  }
+  
+  .approval small {
+    color: #666;
+  }
