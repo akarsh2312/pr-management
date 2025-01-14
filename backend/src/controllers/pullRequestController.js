@@ -25,18 +25,26 @@ const createPullRequest = async (req, res) => {
     const { title, description, approvers } = req.body;
     const requesterId = req.user._id;
 
+    // Validate input
+    if (!title || !description || !approvers || !Array.isArray(approvers)) {
+        return res.status(400).json({ message: 'All fields are required and approvers must be an array' });
+    }
+
     try {
         const pullRequest = new PullRequest({
             title,
             description,
             requesterId,
-            approvers: approvers.map(approverId => ({ approverId, status: 'Pending' }))
+            // Initialize approvers with status 'Pending'
+            approvers: approvers.map(approverId => ({ approverId, status: 'Pending' })),
+            // Set initial pull request status to 'Open'
+            status: 'Open'
         });
 
         await pullRequest.save();
         res.status(201).json(pullRequest);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        res.status(500).json({ message: 'Server error, please try again later' });
     }
 };
 

@@ -1,4 +1,4 @@
-const Comment = require('../models/reviewModel');
+const Review = require('../models/reviewModel');
 
 const addComment = async (req, res) => {
     const { comments } = req.body;
@@ -6,7 +6,7 @@ const addComment = async (req, res) => {
     const reviewerId = req.user._id;
 
     try {
-        const comment = new Comment({
+        const comment = new Review({
             pullRequestId,
             reviewerId,
             comments
@@ -21,7 +21,7 @@ const addComment = async (req, res) => {
 
 const getComments = async (req, res) => {
     try {
-        const comments = await Comment.find({ pullRequestId: req.params.id });
+        const comments = await Review.find({ pullRequestId: req.params.id });
         res.status(200).json(comments);
     } catch (error) {
         res.status(400).json({ message: error.message });
