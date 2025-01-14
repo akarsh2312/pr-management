@@ -5,7 +5,7 @@ const connectDB = require('./config/db');
 const approvalRoutes = require('./routes/approvalRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const pullRequestRoutes = require('./routes/pullRequestRoutes');
-
+const authRoutes = require('./routes/authRoutes');
 dotenv.config({
     path: '../.env'
 });
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use('/api/pull-requests', pullRequestRoutes);
 app.use('/api/pull-requests', commentRoutes);
 app.use('/api/pull-requests', approvalRoutes);
-
+app.use('/api/auth', authRoutes);
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
